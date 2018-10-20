@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :histories
   resources :rooms , shallow: true do
   	resources :users
   end
