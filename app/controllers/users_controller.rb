@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :in_or_out]
   before_action :set_room, only: [:new]
 
+  protect_from_forgery except: :in_or_out
   # GET /users
   # GET /users.json
   def index
@@ -60,6 +61,22 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def in_or_out
+    #@history = History.new(history_params)
+    @history = @user.histories.build
+    #@history.user_id = @user.id
+    @history.in_or_out = params["in_or_out"]
+    #@history.in_or_out = true
+
+    respond_to do |format|
+      if @history.save
+        format.json { head :ok }
+      else
+        format.json { render json: @history.errors, status: :unprocessable_entity }
+      end
     end
   end
 

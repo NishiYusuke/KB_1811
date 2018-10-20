@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
   resources :rooms , shallow: true do
-  	resources :users
+  	resources :users do
+  		member do
+  			post :in_or_out
+  		end
+  	end
   end
 
   root 'rooms#index'
