@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_room, only: [:new]
 
   # GET /users
   # GET /users.json
@@ -14,7 +15,8 @@ class UsersController < ApplicationController
 
   # GET /users/new
   def new
-    @user = User.new
+    #@user = User.new
+    @user = @room.users.build
   end
 
   # GET /users/1/edit
@@ -65,6 +67,10 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def set_room
+      @room = Room.find(params[:room_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
