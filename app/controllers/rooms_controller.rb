@@ -1,6 +1,7 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update, :destroy, :count]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :count, :find, :front_person]
 
+  protect_from_forgery except: :front
   # GET /rooms
   # GET /rooms.json
   def index
@@ -62,10 +63,32 @@ class RoomsController < ApplicationController
     end
   end
 
+  # GET
   def count
     count = @room.count
     personal = {'count' => count }
     render :json => personal
+  end
+
+  # PUT
+  def find
+    @room.front_person = params["user_id"]
+    respond_to do |format|
+      if @room.save
+        format.json { head :ok }
+        format.html { head :ok }
+      else
+        format.json { render json: @room.errors, status: :unprocessable_entity }
+        format.html { render json: @room.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # GET
+  def front_person
+    user = User.find(@room.front_person)
+    json = {'user_id' => @room.front_person , 'name' => user.name }
+    render :json => json
   end
 
   private

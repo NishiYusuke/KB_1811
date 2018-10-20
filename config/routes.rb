@@ -1,15 +1,15 @@
 Rails.application.routes.draw do
   
   resources :rooms , shallow: true do
-    
     member do
       get :count
+      put :find
+      get :front_person
     end
   	
     resources :users do
   		member do
   			post :in_or_out
-  			post :find
   		end
   	end
 
