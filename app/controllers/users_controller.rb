@@ -66,17 +66,16 @@ class UsersController < ApplicationController
   end
 
   def in_or_out
-    #@history = History.new(history_params)
     @history = @user.histories.build
-    #@history.user_id = @user.id
     @history.in_or_out = params["in_or_out"]
-    #@history.in_or_out = true
 
     respond_to do |format|
       if @history.save
         format.json { head :ok }
+        format.html { head :ok }
       else
         format.json { render json: @history.errors, status: :unprocessable_entity }
+        format.html { render json: @history.errors, status: :unprocessable_entity }
       end
     end
   end
