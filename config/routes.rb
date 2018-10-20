@@ -2,9 +2,10 @@ Rails.application.routes.draw do
   
   resources :rooms , shallow: true do
   	resources :users do
-  	  member do
-        post :inorout
-      end
+  		member do
+  			post :in_or_out
+  			post :find
+  		end
   	end
   end
 
