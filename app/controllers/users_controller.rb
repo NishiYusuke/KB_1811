@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :in_or_out]
   before_action :set_room, only: [:new]
 
+  protect_from_forgery except: :in_or_out
   # GET /users
   # GET /users.json
   def index
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @histories = @user.histories
   end
 
   # GET /users/new
@@ -63,6 +65,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def in_or_out
+    @history = @user.histories.build
+    @history.in_or_out = params["in_or_out"]
+
+    respond_to do |format|
+      if @history.save
+        format.json { head :ok }
+        format.html { head :ok }
+      else
+        format.json { render json: @history.errors, status: :unprocessable_entity }
+        format.html { render json: @history.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def find
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

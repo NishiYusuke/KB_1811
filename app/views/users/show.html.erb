@@ -15,5 +15,12 @@
   <%= @user.attachment %>
 </p>
 
+<% @histories.each do |history| %>
+  <p>
+  	<strong>History:</strong>
+  	<%= history.in_or_out %>
+  	<%= history.created_at%>
+  </p>
+<% end %>
 <%#= link_to 'Edit', edit_user_path(@user) %> |
 <%#= link_to 'Back', users_path %>
