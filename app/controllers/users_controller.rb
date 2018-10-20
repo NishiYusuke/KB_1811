@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :inorout]
   before_action :set_room, only: [:new]
+
+  protect_from_forgery except: :inorout
 
   # GET /users
   # GET /users.json
@@ -63,6 +65,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def inorout
+    @history = @user.histories.new(history_params)
+    @history.in_or_out = params["in_or_out"]
+    @history.save
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -76,5 +84,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :room_id, :attachment)
+    end
+
+    def history_params
+      params.require(:history).permit(:in_or_out, :user_id)
     end
 end
