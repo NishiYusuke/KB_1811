@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_20_155920) do
+ActiveRecord::Schema.define(version: 2018_10_20_152854) do
 
   create_table "histories", force: :cascade do |t|
     t.boolean "in_or_out"

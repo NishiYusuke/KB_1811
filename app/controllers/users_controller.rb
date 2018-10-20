@@ -67,14 +67,6 @@ class UsersController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-  def inorout
-    @history = @user.histories.new(history_params)
-    @history.in_or_out = params["in_or_out"]
-    @history.save
-  end
-
-=======
   def in_or_out
     @history = @user.histories.build
     @history.in_or_out = params["in_or_out"]
@@ -93,7 +85,6 @@ class UsersController < ApplicationController
   def find
   end
   
->>>>>>> 751041b0a509c049694f53f8151d70174b33858c
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
