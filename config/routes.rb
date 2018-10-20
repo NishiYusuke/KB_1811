@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   	resources :users do
   		member do
   			post :in_or_out
+  			post :find
   		end
   	end
   end
