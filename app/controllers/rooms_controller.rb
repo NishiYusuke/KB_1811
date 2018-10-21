@@ -70,7 +70,7 @@ class RoomsController < ApplicationController
     render :json => personal
   end
 
-  # PUT
+  # POST
   def find
     @room.front_person = params["user_id"]
     respond_to do |format|
@@ -86,9 +86,13 @@ class RoomsController < ApplicationController
 
   # GET
   def front_person
-    user = User.find(@room.front_person)
-    json = {'user_id' => @room.front_person , 'name' => user.name }
-    render :json => json
+    if @room.front_person == nil or @room.front_person == 0 then
+      render :json => {}
+    else  
+      user = User.find(@room.front_person)
+      json = {'user_id' => @room.front_person , 'name' => user.name }
+      render :json => json
+    end
   end
 
   def who

@@ -10,12 +10,25 @@ class User < ApplicationRecord
 		return false
 	end
 
+	#12を境界にする
 	def average_leave_time
 		times = []
 		self.histories.limit(3).each do |history|
-			times.push time_ago_in_words(history.created_at).hours
+			#times.push time_ago_in_words(history.created_at).hours
+			old = time_bias(history.created_at.hour)
+			now = time_bias(Time.zone.now.hour)
+			puts old
+			puts now
+			times.push ( old - now ).to_i
 		end
-		times.inject{ |sum, el| sum + el }.to_f / times.size
+		return times.inject{ |sum, el| sum + el }.to_f / times.size
+	end
+
+	def time_bias(time)
+		if time < 12 then
+			time += 12
+		end
+		time
 	end
 end
 

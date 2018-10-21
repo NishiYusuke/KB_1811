@@ -22,5 +22,14 @@
   	<%= history.created_at%>
   </p>
 <% end %>
-<%#= link_to 'Edit', edit_user_path(@user) %> |
-<%#= link_to 'Back', users_path %>
+
+<% @histories.each do |history| %>
+<% if history.in_or_out then %>
+<h2>IN <%= history.created_at %> </h2>
+<% else %>
+<h2>OUT <%= history.created_at %></h2>
+<% end %>
+
+
+
+<% end %>
