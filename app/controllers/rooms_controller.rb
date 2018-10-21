@@ -1,7 +1,7 @@
 class RoomsController < ApplicationController
-  before_action :set_room, only: [:show, :edit, :update, :destroy, :count, :find, :front_person]
+  before_action :set_room, only: [:show, :edit, :update, :destroy, :count, :find, :front_person, :who]
 
-  protect_from_forgery except: :front
+  protect_from_forgery except: [:front, :who]
   # GET /rooms
   # GET /rooms.json
   def index
@@ -89,6 +89,16 @@ class RoomsController < ApplicationController
     user = User.find(@room.front_person)
     json = {'user_id' => @room.front_person , 'name' => user.name }
     render :json => json
+  end
+
+  def who
+    array = []
+    @room.users.each do |user|
+      if user.in_or_out then
+        array.push user
+      end
+    end
+    render :json => array
   end
 
   private

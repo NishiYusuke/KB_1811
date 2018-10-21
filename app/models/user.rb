@@ -9,5 +9,13 @@ class User < ApplicationRecord
 		end
 		return false
 	end
+
+	def average_leave_time
+		times = []
+		self.histories.limit(3).each do |history|
+			times.push time_ago_in_words(history.created_at).hours
+		end
+		times.inject{ |sum, el| sum + el }.to_f / times.size
+	end
 end
 

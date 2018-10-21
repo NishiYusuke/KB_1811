@@ -5,11 +5,13 @@ Rails.application.routes.draw do
       get :count
       put :find
       get :front_person
+      get :who
     end
   	
     resources :users do
   		member do
   			post :in_or_out
+        get :is_late
   		end
   	end
 

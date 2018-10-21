@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :in_or_out]
+  before_action :set_user, only: [:show, :edit, :update, :destroy, :in_or_out, :is_late]
   before_action :set_room, only: [:new]
 
   protect_from_forgery except: :in_or_out
@@ -80,6 +80,17 @@ class UsersController < ApplicationController
         format.html { render json: @history.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def is_late
+    flag = false
+    if @user.average_leave_time > 0 then
+      flag = true
+    elsif
+      flag = false
+    end
+    json = {'is_late' => flag }
+    render :json => json
   end
   
   private
