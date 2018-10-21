@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :rooms , shallow: true do
     member do
       get :count
-      put :find
+      post :find
       get :front_person
       get :who
     end

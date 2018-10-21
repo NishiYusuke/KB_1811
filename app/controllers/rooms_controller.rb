@@ -70,7 +70,7 @@ class RoomsController < ApplicationController
     render :json => personal
   end
 
-  # PUT
+  # POST
   def find
     @room.front_person = params["user_id"]
     respond_to do |format|
