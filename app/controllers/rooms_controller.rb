@@ -86,9 +86,13 @@ class RoomsController < ApplicationController
 
   # GET
   def front_person
-    user = User.find(@room.front_person)
-    json = {'user_id' => @room.front_person , 'name' => user.name }
-    render :json => json
+    if @room.front_person == nil then
+      render :json => {}
+    else  
+      user = User.find(@room.front_person)
+      json = {'user_id' => @room.front_person , 'name' => user.name }
+      render :json => json
+    end
   end
 
   def who
