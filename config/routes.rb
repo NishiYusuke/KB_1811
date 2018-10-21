@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'root/index'
+
+  root to: 'root#index'
+
   resources :rooms , shallow: true do
     member do
       get :count
@@ -17,6 +21,5 @@ Rails.application.routes.draw do
 
   end
 
-  root 'rooms#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
