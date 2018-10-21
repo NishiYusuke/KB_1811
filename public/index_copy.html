@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html><head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+  <!-- Website CSS style -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+
+   <!-- Website Font style -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+   <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+  
+
+    
+
+   <link rel="stylesheet" media="all" href="KB1811_files/rooms.css" data-turbolinks-track="reload">
+  <link rel="stylesheet" media="all" href="KB1811_files/scaffolds.css" data-turbolinks-track="reload">
+  <link rel="stylesheet" media="all" href="KB1811_files/users.css" data-turbolinks-track="reload">
+  <link rel="stylesheet" media="all" href="KB1811_files/application.css" data-turbolinks-track="reload">
+    <script src="KB1811_files/rails-ujs.js" data-turbolinks-track="reload"></script>
+  <script src="KB1811_files/activestorage.js" data-turbolinks-track="reload"></script>
+  <script src="KB1811_files/turbolinks.js" data-turbolinks-track="reload"></script>
+  <script src="KB1811_files/action_cable.js" data-turbolinks-track="reload"></script>
+  <script src="KB1811_files/cable.js" data-turbolinks-track="reload"></script>
+  <script src="KB1811_files/rooms.js" data-turbolinks-track="reload"></script>
+  <script src="KB1811_files/users.js" data-turbolinks-track="reload"></script>
+  <script src="KB1811_files/application.js" data-turbolinks-track="reload"></script>
+  <title>KB1811</title><meta name="csrf-param" content="authenticity_token"><meta name="csrf-token" content="CV7YFfaRCC4Wwm5amCyhI3N8SdoT4a+lsS4GsIeWI78saL2paqkquWCKWi+X6MprmfEERrLW19OfhVknbwOFLQ==">
+</head>
+
+
+<body class="bg-info">
+<div class="col-lg-6">
+  <!-- Fixed navbar -->
+  <div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <a class="navbar-brand" href="file:///C:/Users/asuka/Desktop/jphacks/index.html#"><b>PASTEL</b></a>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+
+  <p id="notice"></p>
+  <div align="center">
+    <p>
+      <h2><strong>PASTEL</strong></h2>
+    </p>
+  </div>
+
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="form-group" >
+          <a href="http://localhost:3000/rooms/4/edit" target="_blank" type="button" id="button" class="btn btn-primary">
+        Edit</a>
+        </div>
+      </div>
+      <div class="col-sm-2">
+        <div class="form-group " >
+          <a href="http://localhost:3000/rooms" target="_blank" type="button" id="button" class="btn btn-default">Back</a>
+        </div>
+      </div>
+    </div>
+
+<!--
+<a href="http://localhost:3000/rooms/4/edit">Edit</a> |
+<a href="http://localhost:3000/rooms">Back</a>
+-->
+
+  <div>
+    <table class="table table-hover ">
+      <thead>
+        <tr class="active">
+            <th>#</th>
+            <th>Name</th>
+            <th>Room</th>
+            <th>Attachment</th>
+            <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="active">
+          <th>1</th>
+            <td>kuma</td>
+            <td>4</td>
+            <td>mori</td>
+            <td><a href="http://localhost:3000/users/4" target="_blank" type="button" id="button" class="btn btn-primary btn-sm">Show</a></td>
+            <td><a href="http://localhost:3000/users/4/edit" target="_blank" type="button" id="button" class="btn btn-primary btn-sm">Edit</a></td>
+            <td><a data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="http://localhost:3000/users/4" target="_blank" type="button" id="button" class="btn btn-danger btn-sm">Destroy</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <a href="http://localhost:3000/rooms/4/users/new" type="button" id="button" class="btn btn-success">user new</a>
+  </div>
+  
+</div>
+</body></html>
