@@ -86,7 +86,7 @@ class RoomsController < ApplicationController
 
   # GET
   def front_person
-    if @room.front_person == nil then
+    if @room.front_person == nil or @room.front_person == 0 then
       render :json => {}
     else  
       user = User.find(@room.front_person)
